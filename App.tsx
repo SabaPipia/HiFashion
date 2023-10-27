@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SecondScreen from "./screens/SecondScree";
 import { StatusBar } from "expo-status-bar";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import Header from "./components/header";
 
 const Stack = createNativeStackNavigator();
@@ -12,7 +12,9 @@ export default function App() {
   return (
     <>
       <NavigationContainer>
-        <Header />
+        <View>
+          <Header />
+        </View>
         <Stack.Navigator>
           <Stack.Screen
             name="Home"

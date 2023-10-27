@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
 import {
   StyleSheet,
@@ -6,52 +5,69 @@ import {
   View,
   ImageBackground,
   Pressable,
-  ScrollView,
+  FlatList,
   Platform,
+  Dimensions,
 } from "react-native";
-import { Dimensions } from "react-native";
+import NewArrival from "./components/newArrival";
 
 export default function HomeScreen({ navigation }: any) {
+  const data = [{ key: "hero" }, { key: "newArrival" }];
+  const screenHeight = Dimensions.get("window").height;
+  const heroBackgroundHeight = screenHeight - 80;
+
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <ImageBackground
-        source={require("../../assets/hero.png")}
-        style={styles.backgroundImage}
-      >
-        <View style={styles.heroMainTextContainer}>
-          <Text style={[styles.heroMainText, { marginLeft: 0 }]}>LUXURY</Text>
-          <Text style={[styles.heroMainText, { marginLeft: 10 }]}>FASHION</Text>
-          <Text style={[styles.heroMainText, { marginLeft: 15 }]}>
-            & ACCESSORIES
-          </Text>
-        </View>
-        <View style={styles.overlay}>
-          <Pressable
-            style={styles.heroButton}
-            onPress={() => navigation.navigate("Second")}
-          >
-            <Text style={styles.buttonText}>EXPLORE COLLECTION</Text>
-          </Pressable>
-        </View>
-      </ImageBackground>
-    </ScrollView>
+    <FlatList
+      data={data}
+      keyExtractor={(item) => item.key}
+      renderItem={({ item }) => {
+        if (item.key === "hero") {
+          return (
+            <ImageBackground
+              source={require("../../assets/hero.png")}
+              style={{ height: heroBackgroundHeight }}
+            >
+              <View style={styles.heroMainTextContainer}>
+                <Text style={[styles.heroMainText, { marginLeft: 0 }]}>
+                  LUXURY
+                </Text>
+                <Text style={[styles.heroMainText, { marginLeft: 10 }]}>
+                  FASHION
+                </Text>
+                <Text style={[styles.heroMainText, { marginLeft: 15 }]}>
+                  & ACCESSORIES
+                </Text>
+              </View>
+              <View style={styles.overlay}>
+                <Pressable
+                  style={styles.heroButton}
+                  onPress={() => navigation.navigate("Second")}
+                >
+                  <Text style={styles.buttonText}>EXPLORE COLLECTION</Text>
+                </Pressable>
+              </View>
+            </ImageBackground>
+          );
+        } else if (item.key === "newArrival") {
+          return (
+            <View style={styles.newArrivalContainer}>
+              <NewArrival />
+            </View>
+          );
+        }
+        return null;
+      }}
+    />
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  backgroundImage: {
-    flex: 1,
-  },
   overlay: {
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",
   },
   heroButton: {
-    width: "auto",
     backgroundColor: "#1a1a1a",
     paddingHorizontal: 25,
     paddingVertical: 16,
@@ -76,5 +92,9 @@ const styles = StyleSheet.create({
     color: "gray",
     fontStyle: "italic",
     fontFamily: Platform.OS === "ios" ? "Didot" : "serif",
+  },
+  newArrivalContainer: {
+    padding: 20,
+    flex: 1,
   },
 });

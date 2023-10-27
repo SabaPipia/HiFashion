@@ -1,15 +1,26 @@
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { StyleSheet, View, Platform, Image, Pressable } from "react-native";
 import { NavigationProps } from "../../types/headerTypes";
 
 export default function Header() {
   const navigation = useNavigation<NavigationProps>();
+  const [headerHeight, setHeaderHeight] = useState(0);
   const navigateToHome = () => {
     navigation.navigate("Home");
   };
+  const headerRef = useRef<View>(null);
+
+  useEffect(() => {
+    if (headerRef.current) {
+      headerRef.current.measure((x, y, width, height, pageX, pageY) => {
+        setHeaderHeight(height);
+      });
+    }
+  }, []);
+
   return (
-    <View style={styles.container}>
+    <View ref={headerRef} style={styles.container}>
       <View>
         <Image
           source={require("../../assets/burgerLogo.png")}
@@ -40,7 +51,7 @@ export default function Header() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: Platform.OS === "ios" ? 40 : 30,
+    paddingTop: 40,
     paddingHorizontal: 10,
     flexDirection: "row",
     justifyContent: "space-between",
