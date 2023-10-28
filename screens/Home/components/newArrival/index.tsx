@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Pressable } from "react-native";
 import Card from "./Card";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import CompanyLogos from "./companyLogos";
+import Devider from "../../../../components/devider";
 
 export default function NewArrival() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
@@ -9,9 +10,7 @@ export default function NewArrival() {
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>New Arrival</Text>
-      <View style={styles.devider}>
-        <View style={styles.deviderBox}></View>
-      </View>
+      <Devider />
       <View
         style={{
           flexDirection: "row",
@@ -21,7 +20,7 @@ export default function NewArrival() {
       >
         {category.map((item, index) => {
           return (
-            <View>
+            <View key={index}>
               <Text
                 style={[
                   styles.categoryText,
@@ -29,7 +28,6 @@ export default function NewArrival() {
                     ? { color: "black" }
                     : { color: "#88888876" },
                 ]}
-                key={index}
                 onPress={() => setSelectedCategory(item)}
               >
                 {item}
@@ -57,6 +55,12 @@ export default function NewArrival() {
         <Card selectedCategory={selectedCategory} />
         <Card selectedCategory={selectedCategory} />
       </View>
+      <Pressable style={styles.customButton}>
+        <Text style={styles.customButtonText}>EXPLORE MORE &#10142;</Text>
+      </Pressable>
+      <Devider />
+      <CompanyLogos />
+      <Devider />
     </View>
   );
 }
@@ -73,24 +77,6 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "100",
   },
-  devider: {
-    width: 200,
-    height: 1,
-    backgroundColor: "#c2c2c2",
-    alignSelf: "center",
-    marginBottom: 10,
-    position: "relative",
-  },
-  deviderBox: {
-    width: 10,
-    height: 10,
-    backgroundColor: "#F2F2F2",
-    borderWidth: 1,
-    borderBlockColor: "black",
-    alignSelf: "center",
-    position: "absolute",
-    transform: [{ rotate: "45deg" }, { translateY: -6 }],
-  },
   cardContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -99,5 +85,18 @@ const styles = StyleSheet.create({
   },
   categoryText: {
     fontSize: 18,
+  },
+  customButton: {
+    borderWidth: 1,
+    borderColor: "#a9a9a9",
+    alignSelf: "center",
+    paddingHorizontal: 40,
+    paddingVertical: 10,
+    marginBottom: 50,
+  },
+  customButtonText: {
+    fontSize: 20,
+    letterSpacing: 4,
+    fontWeight: "300",
   },
 });
