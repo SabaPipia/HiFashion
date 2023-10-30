@@ -10,9 +10,16 @@ import {
   Dimensions,
 } from "react-native";
 import NewArrival from "./components/newArrival";
+import Collections from "./components/Collections";
+import CustomCarousel from "./components/ForYou";
 
 export default function HomeScreen({ navigation }: any) {
-  const data = [{ key: "hero" }, { key: "newArrival" }];
+  const data = [
+    { key: "hero" },
+    { key: "newArrival" },
+    { key: "Collections" },
+    { key: "ForYou" }, // Use "ForYou" here to match the key in CustomCarousel
+  ];
   const screenHeight = Dimensions.get("window").height;
   const heroBackgroundHeight = screenHeight - 80;
 
@@ -52,6 +59,18 @@ export default function HomeScreen({ navigation }: any) {
           return (
             <View style={styles.newArrivalContainer}>
               <NewArrival />
+            </View>
+          );
+        } else if (item.key === "Collections") {
+          return (
+            <View style={styles.collectionsContainer}>
+              <Collections />
+            </View>
+          );
+        } else if (item.key === "ForYou") {
+          return (
+            <View style={styles.collectionsContainer}>
+              <CustomCarousel />
             </View>
           );
         }
@@ -96,5 +115,8 @@ const styles = StyleSheet.create({
   newArrivalContainer: {
     padding: 20,
     flex: 1,
+  },
+  collectionsContainer: {
+    marginTop: 70,
   },
 });
