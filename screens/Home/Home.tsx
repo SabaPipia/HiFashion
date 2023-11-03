@@ -69,7 +69,7 @@ export default function HomeScreen({ navigation }: any) {
           );
         } else if (item.key === "ForYou") {
           return (
-            <View style={styles.collectionsContainer}>
+            <View style={styles.carouselContainer}>
               <CustomCarousel />
             </View>
           );
@@ -118,5 +118,10 @@ const styles = StyleSheet.create({
   },
   collectionsContainer: {
     marginTop: 70,
+  },
+  carouselContainer: {
+    flex: 1,
+    // width: "100%",
+    // backgroundColor: "red",
   },
 });
