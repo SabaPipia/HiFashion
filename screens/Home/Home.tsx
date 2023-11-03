@@ -12,13 +12,15 @@ import {
 import NewArrival from "./components/newArrival";
 import Collections from "./components/Collections";
 import CustomCarousel from "./components/ForYou";
+import Trending from "./components/Trending";
 
 export default function HomeScreen({ navigation }: any) {
   const data = [
     { key: "hero" },
     { key: "newArrival" },
     { key: "Collections" },
-    { key: "ForYou" }, // Use "ForYou" here to match the key in CustomCarousel
+    { key: "ForYou" },
+    { key: "Trending" },
   ];
   const screenHeight = Dimensions.get("window").height;
   const heroBackgroundHeight = screenHeight - 80;
@@ -71,6 +73,12 @@ export default function HomeScreen({ navigation }: any) {
           return (
             <View style={styles.carouselContainer}>
               <CustomCarousel />
+            </View>
+          );
+        } else if (item.key === "Trending") {
+          return (
+            <View>
+              <Trending />
             </View>
           );
         }
