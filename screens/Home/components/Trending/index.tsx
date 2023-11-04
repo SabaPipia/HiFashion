@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, Dimensions } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Dimensions,
+  Platform,
+} from "react-native";
 
 const Trending = () => {
   return (
@@ -34,7 +41,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#e7e7e7",
     padding: 10,
     fontSize: 18,
-    borderRadius: 30,
+    borderRadius: Platform.OS === "ios" ? 20 : 30,
+    overflow: "hidden",
   },
 });
 

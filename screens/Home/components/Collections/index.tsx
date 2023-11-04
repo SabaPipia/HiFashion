@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Text, Pressable, Image } from "react-native";
-import Devider from "../../../../components/devider";
+import React from "react";
+import { StyleSheet, View, Image } from "react-native";
 
 export default function Collections() {
   return (
-    <View>
+    <View style={{ marginTop: 70 }}>
       <Image
         style={{ width: "100%", objectFit: "cover" }}
         source={require("../../../../assets/collections.png")}

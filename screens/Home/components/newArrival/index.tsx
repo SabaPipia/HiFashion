@@ -70,6 +70,8 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     justifyContent: "center",
     alignContent: "center",
+    padding: 20,
+    flex: 1,
   },
   heading: {
     textAlign: "center",

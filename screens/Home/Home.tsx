@@ -1,135 +1,49 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  ImageBackground,
-  Pressable,
-  FlatList,
-  Platform,
-  Dimensions,
-} from "react-native";
+import { FlatList } from "react-native";
 import NewArrival from "./components/newArrival";
 import Collections from "./components/Collections";
 import CustomCarousel from "./components/ForYou";
 import Trending from "./components/Trending";
+import About from "./components/About";
+import Hero from "./components/Hero";
+import FollowUs from "./components/followUs";
 
-export default function HomeScreen({ navigation }: any) {
+export default function HomeScreen() {
   const data = [
     { key: "hero" },
     { key: "newArrival" },
     { key: "Collections" },
     { key: "ForYou" },
     { key: "Trending" },
+    { key: "About" },
+    { key: "FollowUs" },
   ];
-  const screenHeight = Dimensions.get("window").height;
-  const heroBackgroundHeight = screenHeight - 80;
 
   return (
     <FlatList
       data={data}
       keyExtractor={(item) => item.key}
       renderItem={({ item }) => {
-        if (item.key === "hero") {
-          return (
-            <ImageBackground
-              source={require("../../assets/hero.png")}
-              style={{ height: heroBackgroundHeight }}
-            >
-              <View style={styles.heroMainTextContainer}>
-                <Text style={[styles.heroMainText, { marginLeft: 0 }]}>
-                  LUXURY
-                </Text>
-                <Text style={[styles.heroMainText, { marginLeft: 10 }]}>
-                  FASHION
-                </Text>
-                <Text style={[styles.heroMainText, { marginLeft: 15 }]}>
-                  & ACCESSORIES
-                </Text>
-              </View>
-              <View style={styles.overlay}>
-                <Pressable
-                  style={styles.heroButton}
-                  onPress={() => navigation.navigate("Second")}
-                >
-                  <Text style={styles.buttonText}>EXPLORE COLLECTION</Text>
-                </Pressable>
-              </View>
-            </ImageBackground>
-          );
-        } else if (item.key === "newArrival") {
-          return (
-            <View style={styles.newArrivalContainer}>
-              <NewArrival />
-            </View>
-          );
-        } else if (item.key === "Collections") {
-          return (
-            <View style={styles.collectionsContainer}>
-              <Collections />
-            </View>
-          );
-        } else if (item.key === "ForYou") {
-          return (
-            <View style={styles.carouselContainer}>
-              <CustomCarousel />
-            </View>
-          );
-        } else if (item.key === "Trending") {
-          return (
-            <View>
-              <Trending />
-            </View>
-          );
+        switch (item.key) {
+          case "hero":
+            return <Hero />;
+          case "newArrival":
+            return <NewArrival />;
+          case "Collections":
+            return <Collections />;
+          case "ForYou":
+            return <CustomCarousel />;
+          case "Trending":
+            return <Trending />;
+          case "About":
+            return <About />;
+          case "FollowUs":
+            return <FollowUs />;
+          default:
+            break;
         }
         return null;
       }}
     />
   );
 }
-
-const styles = StyleSheet.create({
-  overlay: {
-    flex: 1,
-    justifyContent: "flex-end",
-    alignItems: "center",
-  },
-  heroButton: {
-    backgroundColor: "#1a1a1a",
-    paddingHorizontal: 25,
-    paddingVertical: 16,
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: Dimensions.get("window").height <= 600 ? 40 : 120,
-  },
-  buttonText: {
-    color: "white",
-    fontSize: 20,
-    fontWeight: "300",
-    letterSpacing: 3,
-  },
-  heroMainTextContainer: {
-    flex: 1,
-    justifyContent: "center",
-    marginTop: 100,
-    marginLeft: 30,
-  },
-  heroMainText: {
-    fontSize: Dimensions.get("window").height <= 600 ? 30 : 40,
-    color: "gray",
-    fontStyle: "italic",
-    fontFamily: Platform.OS === "ios" ? "Didot" : "serif",
-  },
-  newArrivalContainer: {
-    padding: 20,
-    flex: 1,
-  },
-  collectionsContainer: {
-    marginTop: 70,
-  },
-  carouselContainer: {
-    flex: 1,
-    // width: "100%",
-    // backgroundColor: "red",
-  },
-});
