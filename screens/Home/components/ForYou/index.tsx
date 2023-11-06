@@ -1,6 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, Dimensions } from "react-native";
-import Carousel from "react-native-snap-carousel";
+import { View, Text, StyleSheet, Image, FlatList } from "react-native";
 import Devider from "../../../../components/devider";
 
 interface ItemType {
@@ -8,7 +7,6 @@ interface ItemType {
   source: any;
 }
 const CustomCarousel = () => {
-  const windowWidth = Dimensions.get("window").width;
   const images: ItemType[] = [
     { id: 1, source: require("../../../../assets/DummyProductImage.png") },
     { id: 2, source: require("../../../../assets/DummyProductImage.png") },
@@ -16,26 +14,26 @@ const CustomCarousel = () => {
     { id: 4, source: require("../../../../assets/DummyProductImage.png") },
     { id: 5, source: require("../../../../assets/DummyProductImage.png") },
   ];
+
+  const renderItem = ({ item }: { item: ItemType }) => (
+    <View style={styles.itemContainer}>
+      <Image source={item.source} style={styles.carouselImage} />
+      <Text style={styles.text}>Cloth</Text>
+      <Text style={[styles.text, { color: "#DD8560" }]}>$120</Text>
+    </View>
+  );
   return (
     <View style={styles.container}>
       <View style={{ marginBottom: 15 }}>
         <Text style={styles.header}>JUST FOR YOU</Text>
         <Devider />
       </View>
-      <Carousel
+      <FlatList
         data={images}
-        layout={"default"}
-        renderItem={({ item, index }: { item: ItemType; index: number }) => (
-          <View key={index}>
-            <Image source={item.source} style={styles.carouselImage} />
-            <Text style={styles.text}>Cloth</Text>
-            <Text style={[styles.text, { color: "#DD8560" }]}>$120</Text>
-          </View>
-        )}
-        sliderWidth={windowWidth}
-        itemWidth={200}
-        itemHeight={600}
+        renderItem={renderItem}
         keyExtractor={(item) => item.id.toString()}
+        horizontal
+        showsHorizontalScrollIndicator={false}
       />
     </View>
   );
@@ -54,18 +52,17 @@ const styles = StyleSheet.create({
     letterSpacing: 5,
     marginBottom: 15,
   },
-  imageContainer: {
-    flex: 1,
+  itemContainer: {
+    width: 250,
+    margin: 10,
   },
   text: {
     alignSelf: "center",
     fontSize: 20,
   },
-
   carouselImage: {
     width: "100%",
-    objectFit: "fill",
-    height: 200,
+    height: 300,
   },
 });
 

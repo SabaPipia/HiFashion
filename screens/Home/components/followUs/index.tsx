@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between",
     gap: 20,
+    // backgroundColor: "red",
   },
   cardWrapper: {
     gap: 20,
