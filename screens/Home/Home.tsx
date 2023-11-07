@@ -7,8 +7,14 @@ import Trending from "./components/Trending";
 import About from "./components/About";
 import Hero from "./components/Hero";
 import FollowUs from "./components/followUs";
+import Footer from "../../components/footer";
+import { NavigationAction } from "@react-navigation/native";
 
-export default function HomeScreen() {
+export default function HomeScreen({
+  navigation,
+}: {
+  navigation: NavigationAction;
+}) {
   const data = [
     { key: "hero" },
     { key: "newArrival" },
@@ -17,6 +23,7 @@ export default function HomeScreen() {
     { key: "Trending" },
     { key: "About" },
     { key: "FollowUs" },
+    { key: "Footer" },
   ];
 
   return (
@@ -39,6 +46,8 @@ export default function HomeScreen() {
             return <About />;
           case "FollowUs":
             return <FollowUs />;
+          case "Footer":
+            return <Footer navigation={navigation} />;
           default:
             break;
         }
