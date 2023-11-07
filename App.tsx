@@ -5,6 +5,7 @@ import SecondScreen from "./screens/About";
 import { StatusBar } from "expo-status-bar";
 import { View } from "react-native";
 import Header from "./components/header";
+import Blog from "./screens/Blog/Blog";
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,13 @@ export default function App() {
           <Stack.Screen
             name="About"
             component={SecondScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Blog"
+            component={Blog}
             options={{
               headerShown: false,
             }}

@@ -32,7 +32,7 @@ export default function Footer({ navigation }: any) {
         <Pressable onPress={() => navigation.navigate("About")}>
           <Text style={styles.navigationText}>Contact</Text>
         </Pressable>
-        <Pressable onPress={() => navigation.navigate("About")}>
+        <Pressable onPress={() => navigation.navigate("Blog")}>
           <Text style={styles.navigationText}>Blog</Text>
         </Pressable>
       </View>
@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   contactContainer: {
-    // marginTop: 10,
     gap: 6,
     marginVertical: 20,
   },

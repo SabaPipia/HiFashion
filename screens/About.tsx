@@ -1,10 +1,14 @@
-import { StatusBar } from "expo-status-bar";
+import { NavigationAction } from "@react-navigation/native";
 import { StyleSheet, Text, View } from "react-native";
 
-export default function SecondScreen({ navigation, route }: any) {
+export default function SecondScreen({
+  navigation,
+}: {
+  navigation: NavigationAction;
+}) {
   return (
     <View style={styles.container}>
-      <Text>This is second screen </Text>
+      <Text>This is About </Text>
     </View>
   );
 }
