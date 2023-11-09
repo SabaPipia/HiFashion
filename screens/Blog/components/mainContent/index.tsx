@@ -1,3 +1,6 @@
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { StackNavigationHelpers } from "@react-navigation/stack/lib/typescript/src/types";
 import React from "react";
 import { Pressable } from "react-native";
 import {
@@ -9,10 +12,24 @@ import {
   Platform,
   ImageBackground,
 } from "react-native";
-import Footer from "../../../../components/footer";
+import { NavigationProps } from "../../../../types/types";
+// import { NavigationProps } from "../../../../types/headerTypes";
+
+type RootStackParamList = {
+  BlogPost: { postId: string };
+};
+
+type BlogScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  "BlogPost"
+>;
 
 export default function MainContent() {
   const data = ["Fashion", "Promo", "Policy", "Lookbook", "Sale"];
+  const navigation = useNavigation<NavigationProps>();
+  const navigateToBlogPost = (postId: string) => {
+    navigation.navigate("BlogPost", { postId });
+  };
   return (
     <View style={styles.container}>
       <View style={styles.collectionContainer}>
@@ -27,7 +44,7 @@ export default function MainContent() {
           showsHorizontalScrollIndicator={false}
         />
         <View style={styles.mainBlogPostContainer}>
-          <View>
+          <Pressable onPress={() => navigateToBlogPost("პირველი პოსტი")}>
             <View style={styles.blogPost}>
               <ImageBackground
                 source={require("../../../../assets/BlogImage.png")}
@@ -55,7 +72,7 @@ export default function MainContent() {
               </View>
               <Text style={{ fontSize: 15, color: "#777" }}>3 days ago</Text>
             </View>
-          </View>
+          </Pressable>
           <View>
             <View style={styles.blogPost}>
               <ImageBackground
@@ -156,7 +173,6 @@ export default function MainContent() {
           <Text style={styles.loadButton}>LOAD MORE +</Text>
         </Pressable>
       </View>
-      <Footer />
     </View>
   );
 }

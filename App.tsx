@@ -6,6 +6,7 @@ import { StatusBar } from "expo-status-bar";
 import { View } from "react-native";
 import Header from "./components/header";
 import Blog from "./screens/Blog/Blog";
+import BlogPost, { BlogPostProps } from "./screens/BlogPost/blogPost";
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +35,13 @@ export default function App() {
           <Stack.Screen
             name="Blog"
             component={Blog}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="BlogPost"
+            component={(props: any) => <BlogPost {...props} />}
             options={{
               headerShown: false,
             }}
