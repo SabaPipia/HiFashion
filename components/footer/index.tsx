@@ -1,7 +1,11 @@
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import Devider from "../devider";
+import { useNavigation } from "@react-navigation/native";
+import { NavigationProps } from "../../types/headerTypes";
+import { NavigationPropsFooter } from "../../types/types";
 
-export default function Footer({ navigation }: any) {
+export default function Footer() {
+  const navigation = useNavigation<NavigationPropsFooter>();
   return (
     <View style={styles.container}>
       <View style={styles.iconContainer}>

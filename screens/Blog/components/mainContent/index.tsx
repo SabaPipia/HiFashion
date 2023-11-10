@@ -13,21 +13,12 @@ import {
   ImageBackground,
 } from "react-native";
 import { NavigationProps } from "../../../../types/types";
-// import { NavigationProps } from "../../../../types/headerTypes";
-
-type RootStackParamList = {
-  BlogPost: { postId: string };
-};
-
-type BlogScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  "BlogPost"
->;
 
 export default function MainContent() {
   const data = ["Fashion", "Promo", "Policy", "Lookbook", "Sale"];
   const navigation = useNavigation<NavigationProps>();
   const navigateToBlogPost = (postId: string) => {
+    // Navigate to the BlogPost screen with the postId as a parameter
     navigation.navigate("BlogPost", { postId });
   };
   return (

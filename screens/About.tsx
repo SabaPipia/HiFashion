@@ -8,7 +8,7 @@ export default function SecondScreen({
 }) {
   return (
     <View style={styles.container}>
-      <Text>This is About </Text>
+      <Text style={{ fontFamily: "Agbalumo-Regula" }}>This is About </Text>
     </View>
   );
 }

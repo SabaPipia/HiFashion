@@ -14,11 +14,7 @@ type BlogScreenNavigationProp = StackNavigationProp<
   "BlogPost"
 >;
 
-export default function Blog({
-  navigation,
-}: {
-  navigation: BlogScreenNavigationProp;
-}) {
+export default function Blog() {
   const data = [{ key: "header" }, { key: "MainContent" }, { key: "footer" }];
   return (
     <FlatList
@@ -32,7 +28,7 @@ export default function Blog({
           case "MainContent":
             return <MainContent />;
           case "footer":
-            return <Footer navigation={navigation} />;
+            return <Footer />;
           default:
             break;
         }
