@@ -6,6 +6,7 @@ import { StatusBar } from "expo-status-bar";
 import Header from "./components/header";
 import Blog from "./screens/Blog/Blog";
 import BlogPost from "./screens/BlogPost/blogPost";
+import Menu from "./screens/Menu/menu";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,13 @@ export default function App() {
           <Stack.Screen name="About" component={SecondScreen} />
           <Stack.Screen name="Blog" component={Blog} />
           <Stack.Screen name="BlogPost" component={BlogPost} />
+          <Stack.Screen
+            name="Menu"
+            component={Menu}
+            options={{
+              headerShown: false,
+            }}
+          />
         </Stack.Navigator>
         <StatusBar style="auto" />
       </NavigationContainer>

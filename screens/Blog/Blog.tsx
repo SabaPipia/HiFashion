@@ -9,11 +9,6 @@ type RootStackParamList = {
   // Add other screens as needed
 };
 
-type BlogScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  "BlogPost"
->;
-
 export default function Blog() {
   const data = [{ key: "header" }, { key: "MainContent" }, { key: "footer" }];
   return (

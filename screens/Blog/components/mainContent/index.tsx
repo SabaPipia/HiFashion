@@ -1,6 +1,4 @@
 import { useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { StackNavigationHelpers } from "@react-navigation/stack/lib/typescript/src/types";
 import React from "react";
 import { Pressable } from "react-native";
 import {
@@ -35,55 +33,28 @@ export default function MainContent() {
           showsHorizontalScrollIndicator={false}
         />
         <View style={styles.mainBlogPostContainer}>
-          <Pressable onPress={() => navigateToBlogPost("პირველი პოსტი")}>
-            <View style={styles.blogPost}>
-              <ImageBackground
-                source={require("../../../../assets/BlogImage.png")}
-                style={styles.image}
-              >
-                <View style={styles.linearGradient} />
-                <View style={styles.blogPostPictureText}>
-                  <Text style={{ color: "#fff", fontSize: 19 }}>
-                    2021 Style Guide: The Biggest
-                  </Text>
-                  <Text style={{ color: "#fff", fontSize: 19 }}>
-                    Fall Trends
-                  </Text>
-                </View>
-                <Image
-                  style={styles.bookmarkIcon}
-                  source={require("../../../../assets/Bookmark.png")}
-                />
-              </ImageBackground>
-            </View>
-            <View style={styles.blogPostFooter}>
-              <View style={styles.blogTagsContainer}>
-                <Text style={styles.blogTags}>#Fashion</Text>
-                <Text style={styles.blogTags}>#Tips</Text>
-              </View>
-              <Text style={{ fontSize: 15, color: "#777" }}>3 days ago</Text>
-            </View>
-          </Pressable>
           <View>
             <View style={styles.blogPost}>
-              <ImageBackground
-                source={require("../../../../assets/BlogImage.png")}
-                style={styles.image}
-              >
-                <View style={styles.linearGradient} />
-                <View style={styles.blogPostPictureText}>
-                  <Text style={{ color: "#fff", fontSize: 19 }}>
-                    2021 Style Guide: The Biggest
-                  </Text>
-                  <Text style={{ color: "#fff", fontSize: 19 }}>
-                    Fall Trends
-                  </Text>
-                </View>
-                <Image
-                  style={styles.bookmarkIcon}
-                  source={require("../../../../assets/Bookmark.png")}
-                />
-              </ImageBackground>
+              <Pressable onPress={() => navigateToBlogPost("პირველი პოსტი")}>
+                <ImageBackground
+                  source={require("../../../../assets/BlogImage.png")}
+                  style={styles.image}
+                >
+                  <View style={styles.linearGradient} />
+                  <View style={styles.blogPostPictureText}>
+                    <Text style={{ color: "#fff", fontSize: 19 }}>
+                      2021 Style Guide: The Biggest
+                    </Text>
+                    <Text style={{ color: "#fff", fontSize: 19 }}>
+                      Fall Trends
+                    </Text>
+                  </View>
+                  <Image
+                    style={styles.bookmarkIcon}
+                    source={require("../../../../assets/Bookmark.png")}
+                  />
+                </ImageBackground>
+              </Pressable>
             </View>
             <View style={styles.blogPostFooter}>
               <View style={styles.blogTagsContainer}>
@@ -95,24 +66,26 @@ export default function MainContent() {
           </View>
           <View>
             <View style={styles.blogPost}>
-              <ImageBackground
-                source={require("../../../../assets/BlogImage.png")}
-                style={styles.image}
-              >
-                <View style={styles.linearGradient} />
-                <View style={styles.blogPostPictureText}>
-                  <Text style={{ color: "#fff", fontSize: 19 }}>
-                    2021 Style Guide: The Biggest
-                  </Text>
-                  <Text style={{ color: "#fff", fontSize: 19 }}>
-                    Fall Trends
-                  </Text>
-                </View>
-                <Image
-                  style={styles.bookmarkIcon}
-                  source={require("../../../../assets/Bookmark.png")}
-                />
-              </ImageBackground>
+              <Pressable onPress={() => navigateToBlogPost("მეორე პოსტი")}>
+                <ImageBackground
+                  source={require("../../../../assets/BlogImage.png")}
+                  style={styles.image}
+                >
+                  <View style={styles.linearGradient} />
+                  <View style={styles.blogPostPictureText}>
+                    <Text style={{ color: "#fff", fontSize: 19 }}>
+                      2021 Style Guide: The Biggest
+                    </Text>
+                    <Text style={{ color: "#fff", fontSize: 19 }}>
+                      Fall Trends
+                    </Text>
+                  </View>
+                  <Image
+                    style={styles.bookmarkIcon}
+                    source={require("../../../../assets/Bookmark.png")}
+                  />
+                </ImageBackground>
+              </Pressable>
             </View>
             <View style={styles.blogPostFooter}>
               <View style={styles.blogTagsContainer}>
@@ -124,24 +97,57 @@ export default function MainContent() {
           </View>
           <View>
             <View style={styles.blogPost}>
-              <ImageBackground
-                source={require("../../../../assets/BlogImage.png")}
-                style={styles.image}
-              >
-                <View style={styles.linearGradient} />
-                <View style={styles.blogPostPictureText}>
-                  <Text style={{ color: "#fff", fontSize: 19 }}>
-                    2021 Style Guide: The Biggest
-                  </Text>
-                  <Text style={{ color: "#fff", fontSize: 19 }}>
-                    Fall Trends
-                  </Text>
-                </View>
-                <Image
-                  style={styles.bookmarkIcon}
-                  source={require("../../../../assets/Bookmark.png")}
-                />
-              </ImageBackground>
+              <Pressable onPress={() => navigateToBlogPost("მესამე პოსტი")}>
+                <ImageBackground
+                  source={require("../../../../assets/BlogImage.png")}
+                  style={styles.image}
+                >
+                  <View style={styles.linearGradient} />
+                  <View style={styles.blogPostPictureText}>
+                    <Text style={{ color: "#fff", fontSize: 19 }}>
+                      2021 Style Guide: The Biggest
+                    </Text>
+                    <Text style={{ color: "#fff", fontSize: 19 }}>
+                      Fall Trends
+                    </Text>
+                  </View>
+                  <Image
+                    style={styles.bookmarkIcon}
+                    source={require("../../../../assets/Bookmark.png")}
+                  />
+                </ImageBackground>
+              </Pressable>
+            </View>
+            <View style={styles.blogPostFooter}>
+              <View style={styles.blogTagsContainer}>
+                <Text style={styles.blogTags}>#Fashion</Text>
+                <Text style={styles.blogTags}>#Tips</Text>
+              </View>
+              <Text style={{ fontSize: 15, color: "#777" }}>3 days ago</Text>
+            </View>
+          </View>
+          <View>
+            <View style={styles.blogPost}>
+              <Pressable onPress={() => navigateToBlogPost("მეოთხე პოსტი")}>
+                <ImageBackground
+                  source={require("../../../../assets/BlogImage.png")}
+                  style={styles.image}
+                >
+                  <View style={styles.linearGradient} />
+                  <View style={styles.blogPostPictureText}>
+                    <Text style={{ color: "#fff", fontSize: 19 }}>
+                      2021 Style Guide: The Biggest
+                    </Text>
+                    <Text style={{ color: "#fff", fontSize: 19 }}>
+                      Fall Trends
+                    </Text>
+                  </View>
+                  <Image
+                    style={styles.bookmarkIcon}
+                    source={require("../../../../assets/Bookmark.png")}
+                  />
+                </ImageBackground>
+              </Pressable>
             </View>
             <View style={styles.blogPostFooter}>
               <View style={styles.blogTagsContainer}>

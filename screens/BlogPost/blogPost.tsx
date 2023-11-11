@@ -6,6 +6,7 @@ import {
   StyleSheet,
   ScrollView,
   FlatList,
+  Platform,
 } from "react-native";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { StackParamList } from "../../types/types";
@@ -45,6 +46,7 @@ const BlogPost = () => {
           <Text style={styles.headerText}>
             2021 Style Guide: The Biggest Fall Trends
           </Text>
+          <Text>{postId}</Text>
           <Text style={styles.mainParagraph}>
             You guys know how much I love mixing high and low-end - it's the
             best way to get the most bang for your buck while still elevating
@@ -92,7 +94,6 @@ export default BlogPost;
 const styles = StyleSheet.create({
   mainImage: {
     width: "100%",
-    // objectFit: "cover",
   },
   container: {
     paddingHorizontal: 15,

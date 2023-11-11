@@ -1,22 +1,25 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { StyleSheet, View, Image, Pressable } from "react-native";
+import { StyleSheet, View, Image, Pressable, Text } from "react-native";
 import { NavigationProps } from "../../types/headerTypes";
-
 export default function Header() {
   const navigation = useNavigation<NavigationProps>();
   const navigateToHome = () => {
     navigation.navigate("Home");
   };
 
+  const navigateToMenu = () => {
+    navigation.navigate("Menu");
+  };
+
   return (
     <View style={styles.container}>
-      <View>
+      <Pressable onPress={navigateToMenu}>
         <Image
           source={require("../../assets/burgerLogo.png")}
           style={{ width: 40, height: 40 }}
         />
-      </View>
+      </Pressable>
       <View>
         <Pressable onPress={navigateToHome}>
           <Image
